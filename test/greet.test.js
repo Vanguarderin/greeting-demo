@@ -14,4 +14,8 @@ describe('greet', () => {
   it('should return Hello World for null', () => {
     assert.strictEqual(greet(null), 'Hello, World!');
   });
+
+  it('should return Hello World for undefined', () => {
+    assert.strictEqual(greet(undefined), 'Hello, World!');
+  });
 });
