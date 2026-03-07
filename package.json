@@ -1,0 +1,14 @@
+{
+  "name": "greeting-demo",
+  "version": "1.0.0",
+  "description": "Demo project for greeting function",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'No build step required'",
+    "test": "node --test",
+    "typecheck": "echo 'No typecheck configured'"
+  },
+  "keywords": ["greeting", "demo"],
+  "license": "MIT"
+}
