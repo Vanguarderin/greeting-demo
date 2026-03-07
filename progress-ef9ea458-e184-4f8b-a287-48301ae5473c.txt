@@ -9,6 +9,8 @@ Started: 2026-03-07T11:06:00Z
 - Run tests: `npm test` (invokes `node --test`)
 - No build step required (plain JavaScript)
 - No typecheck configured (no TypeScript)
+- Functions use JSDoc for documentation (no TypeScript)
+- Options pattern: use destructuring with defaults for optional parameters
 
 ---
 ## 2026-03-07T11:06:30Z - US-001: Create greeting function with basic tests
@@ -19,4 +21,15 @@ Started: 2026-03-07T11:06:00Z
 - Files changed: test/greet.test.js
 - Commit: 997b6e3
 - **Learnings:** Project uses node:test built-in framework, no additional test dependencies needed
+---
+## 2026-03-07T11:16:30Z - US-002: Add extended greeting features
+- Extended greet() function with optional style and language parameters
+- Style options: 'normal' (default), 'formal'
+- Language options: 'en' (default), 'es', 'fr'
+- Maintained backward compatibility - calling without options works as before
+- Added 22 comprehensive tests covering all combinations and edge cases
+- All tests pass
+- Files changed: src/index.js, test/greet.test.js
+- Commit: 1a828bb
+- **Learnings:** Options pattern with destructuring works well for backward compatibility, use nested object for greetings map
 ---
