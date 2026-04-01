@@ -27,7 +27,7 @@ This list is from the issue https://github.com/leia-uwu/survev/issues/129, each 
 - ✅: Twins Bunker central barrel has no loot
 - ❌: No class pods (feature not yet implemented)
 
-**6. Savannah**
+**6. Savannah:**
 - ✅: Map generation incorrect
 - ✅: No roles
 - ⚠️: Loot tables incorrect
