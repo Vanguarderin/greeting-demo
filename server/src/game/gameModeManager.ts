@@ -260,7 +260,8 @@ export class GameModeManager {
     handlePlayerDeath(player: Player, params: DamageParams): void {
         switch (this.mode) {
             case GameMode.Solo:
-                return player.kill(params);
+                player.kill(params);
+                return;
             case GameMode.Team:
                 {
                     const sourceIsPlayer = params.source?.__type === ObjectType.Player;

@@ -96,7 +96,7 @@ const mapDef = {
                 },
                 stone_04: 1,
                 club_complex_01: 1,
-                bunker_structure_09: 1
+                bunker_structure_09: 1,
             },
         ],
         randomSpawns: [
@@ -105,9 +105,7 @@ const mapDef = {
                 choose: 2,
             },
         ],
-        spawnReplacements: [
-            { stone_03: "stone_03cb" }
-        ],
+        spawnReplacements: [{ stone_03: "stone_03cb" }],
         importantSpawns: ["bunker_structure_09"],
     },
     /* STRIP_FROM_PROD_CLIENT:END */

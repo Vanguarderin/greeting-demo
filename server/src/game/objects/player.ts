@@ -74,7 +74,7 @@ export class PlayerBarn {
     groups: Group[] = [];
     groupsByHash = new Map<string, Group>();
 
-    constructor(readonly game: Game) { }
+    constructor(readonly game: Game) {}
 
     randomPlayer(player?: Player) {
         const livingPlayers = player
@@ -186,7 +186,7 @@ export class PlayerBarn {
 
                     const randomPlayer =
                         promotablePlayers[
-                        util.randomInt(0, promotablePlayers.length - 1)
+                            util.randomInt(0, promotablePlayers.length - 1)
                         ];
                     randomPlayer.promoteToRole(scheduledRole.role);
                 }
@@ -799,7 +799,7 @@ export class Player extends BaseGameObject {
                         const ammoType = trueWeapDef.ammo;
                         this.inventory[ammoType] =
                             GameConfig.bagSizes[ammoType][
-                            this.getGearLevel(this.backpack)
+                                this.getGearLevel(this.backpack)
                             ];
                     }
                 } else if (trueWeapDef && trueWeapDef.type == "melee") {
@@ -1089,7 +1089,7 @@ export class Player extends BaseGameObject {
             if (
                 this.playerBeingRevived &&
                 v2.distance(this.pos, this.playerBeingRevived.pos) >
-                GameConfig.player.reviveRange
+                    GameConfig.player.reviveRange
             ) {
                 this.cancelAction();
             }
@@ -1407,9 +1407,9 @@ export class Player extends BaseGameObject {
                         if (
                             GameConfig.bagSizes[closestLoot.type] &&
                             this.inventory[closestLoot.type] >=
-                            GameConfig.bagSizes[closestLoot.type][
-                            this.getGearLevel(this.backpack)
-                            ]
+                                GameConfig.bagSizes[closestLoot.type][
+                                    this.getGearLevel(this.backpack)
+                                ]
                         ) {
                             break;
                         }
@@ -1756,7 +1756,7 @@ export class Player extends BaseGameObject {
         if (
             player.playerStatusDirty ||
             player.playerStatusTicker >
-            net.getPlayerStatusUpdateRate(this.game.map.factionMode)
+                net.getPlayerStatusUpdateRate(this.game.map.factionMode)
         ) {
             updateMsg.playerStatus.players =
                 this.game.modeManager.getPlayerStatuses(player);
@@ -1885,7 +1885,7 @@ export class Player extends BaseGameObject {
                 if (groupExistsOrAlive) {
                     playerToSpec =
                         spectatablePlayers[
-                        util.randomInt(0, spectatablePlayers.length - 1)
+                            util.randomInt(0, spectatablePlayers.length - 1)
                         ];
                 } else {
                     let attempts = 0;
@@ -1911,7 +1911,7 @@ export class Player extends BaseGameObject {
                     playerToSpec =
                         aliveKiller ??
                         spectatablePlayers[
-                        util.randomInt(0, spectatablePlayers.length - 1)
+                            util.randomInt(0, spectatablePlayers.length - 1)
                         ];
                 }
                 break;
@@ -2508,7 +2508,7 @@ export class Player extends BaseGameObject {
 
         return (
             this.game.modeManager.getIdContext(medic) ==
-            this.game.modeManager.getIdContext(this) &&
+                this.game.modeManager.getIdContext(this) &&
             !!util.sameLayer(medic.layer, this.layer) &&
             v2.lengthSqr(v2.sub(medic.pos, this.pos)) <= effectRange * effectRange
         );

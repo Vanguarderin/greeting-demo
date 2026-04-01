@@ -315,7 +315,7 @@ export class LoadoutMenu {
             });
             const container = document.getElementById("color-picker");
 
-            this.picker = new window.CP(container, false, container);
+            this.picker = new window.CP(container!, false, container!);
             this.picker.self.classList.add("static");
 
             this.picker.on("change", (color: string) => {

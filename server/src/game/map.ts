@@ -434,7 +434,12 @@ export class GameMap {
             const points: Vec2[] = [];
 
             const center = v2.add(
-                v2.mulElems(v2.create(this.width, this.height), typeof lake.spawnBound.pos == "function" ? lake.spawnBound.pos() : lake.spawnBound.pos),
+                v2.mulElems(
+                    v2.create(this.width, this.height),
+                    typeof lake.spawnBound.pos == "function"
+                        ? lake.spawnBound.pos()
+                        : lake.spawnBound.pos,
+                ),
                 util.randomPointInCircle(lake.spawnBound.rad),
             );
 

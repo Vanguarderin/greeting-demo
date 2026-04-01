@@ -28,7 +28,11 @@ declare global {
         setPassUnlock: (questType: string) => void;
         mobile?: boolean;
         webkitAudioContext?: AudioContext;
-        CP: any;
+        CP: new (
+            source: HTMLElement,
+            mount: boolean,
+            parent: HTMLElement,
+        ) => Record<string, any>;
 
         aiptag?: {
             cmd: {

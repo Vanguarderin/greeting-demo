@@ -87,7 +87,6 @@ export class Grid<T extends GameObject = GameObject> {
         const max = this._roundToCells(aabb.max);
 
         const result: T[] = [];
-        const seen = this._seen;
         const seenId = ++this._seenCounter;
 
         for (let x = min.x; x <= max.x; x++) {
@@ -122,7 +121,10 @@ export class Grid<T extends GameObject = GameObject> {
         const maxCell = this._roundToCells(b);
 
         // If start and end are in the same cell or adjacent, just do AABB
-        if (Math.abs(maxCell.x - minCell.x) <= 1 && Math.abs(maxCell.y - minCell.y) <= 1) {
+        if (
+            Math.abs(maxCell.x - minCell.x) <= 1 &&
+            Math.abs(maxCell.y - minCell.y) <= 1
+        ) {
             return this.intersectCollider(coldet.lineSegmentToAabb(a, b));
         }
 
@@ -132,7 +134,10 @@ export class Grid<T extends GameObject = GameObject> {
 
         const dx = b.x - a.x;
         const dy = b.y - a.y;
-        const steps = Math.max(Math.abs(maxCell.x - minCell.x), Math.abs(maxCell.y - minCell.y));
+        const steps = Math.max(
+            Math.abs(maxCell.x - minCell.x),
+            Math.abs(maxCell.y - minCell.y),
+        );
 
         const visited = new Set<number>();
         for (let i = 0; i <= steps; i++) {

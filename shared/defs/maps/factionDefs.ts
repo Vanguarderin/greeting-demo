@@ -361,7 +361,7 @@ const mapDef = {
                     //{ weight: 1, widths: [20, 4] },
                     //{ weight: 1, widths: [20, 8, 4] },
                 ],
-                smoothness: 0.15, 
+                smoothness: 0.15,
             },
         },
         places: [
@@ -447,7 +447,7 @@ const mapDef = {
             "police_01",
             "bank_01",
             "mansion_structure_01",
-            "warehouse_complex_01"
+            "warehouse_complex_01",
         ],
     },
     /* STRIP_FROM_PROD_CLIENT:END */

@@ -308,7 +308,7 @@ export class Game {
                 const role = (msg as net.PerkModeRoleSelectMsg).role;
 
                 player.promoteToRole(role);
-                
+
                 switch (role) {
                     case "scout": {
                         player.setOutfit("outfitScout");
@@ -335,7 +335,7 @@ export class Game {
                         break;
                     }
                 }
-                
+
                 break;
             }
         }
@@ -355,7 +355,10 @@ export class Game {
         player.setPartDirty();
 
         // If you remove the faction mode condition, it will bug the map because it will make the players who left have their own role while they are not alive, and also, invincible and invisible.
-        if (player.timeAlive < GameConfig.player.minActiveTime && !this.playerBarn.socketIdToPlayer.get(socketId)?.game.map.factionMode) {
+        if (
+            player.timeAlive < GameConfig.player.minActiveTime &&
+            !this.playerBarn.socketIdToPlayer.get(socketId)?.game.map.factionMode
+        ) {
             player.game.playerBarn.removePlayer(player);
         }
     }

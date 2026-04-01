@@ -15,17 +15,17 @@ function getToday(): string {
         "wednesday",
         "thursday",
         "friday",
-        "saturday"
+        "saturday",
     ];
 
     return daysOfWeek[new Date().getDay()];
 }
 
 function getMapsOfTheDay(): Array<{
-        mapName: keyof typeof MapDefs;
-        teamMode: TeamMode;
-        enabled: boolean;
-    }> {
+    mapName: keyof typeof MapDefs;
+    teamMode: TeamMode;
+    enabled: boolean;
+}> {
     const maps: Array<{
         mapName: keyof typeof MapDefs;
         teamMode: TeamMode;
@@ -34,51 +34,51 @@ function getMapsOfTheDay(): Array<{
 
     switch (getToday()) {
         case "sunday": {
-            maps.push({ mapName: 'main', teamMode: 1, enabled: true });
-            maps.push({ mapName: 'main', teamMode: 2, enabled: true });
-            maps.push({ mapName: 'faction', teamMode: 4, enabled: true });
+            maps.push({ mapName: "main", teamMode: 1, enabled: true });
+            maps.push({ mapName: "main", teamMode: 2, enabled: true });
+            maps.push({ mapName: "faction", teamMode: 4, enabled: true });
             break;
         }
         case "monday": {
-            maps.push({ mapName: 'cobalt', teamMode: 1, enabled: true });
-            maps.push({ mapName: 'main', teamMode: 2, enabled: true });
-            maps.push({ mapName: 'cobalt', teamMode: 4, enabled: true });
+            maps.push({ mapName: "cobalt", teamMode: 1, enabled: true });
+            maps.push({ mapName: "main", teamMode: 2, enabled: true });
+            maps.push({ mapName: "cobalt", teamMode: 4, enabled: true });
             break;
         }
         case "tuesday": {
-            maps.push({ mapName: 'turkey', teamMode: 1, enabled: true });
-            maps.push({ mapName: 'turkey', teamMode: 2, enabled: true });
-            maps.push({ mapName: 'main', teamMode: 4, enabled: true });
+            maps.push({ mapName: "turkey", teamMode: 1, enabled: true });
+            maps.push({ mapName: "turkey", teamMode: 2, enabled: true });
+            maps.push({ mapName: "main", teamMode: 4, enabled: true });
             break;
         }
         case "wednesday": {
-            maps.push({ mapName: 'woods', teamMode: 1, enabled: true });
-            maps.push({ mapName: 'main', teamMode: 2, enabled: true });
-            maps.push({ mapName: 'main', teamMode: 4, enabled: true });
+            maps.push({ mapName: "woods", teamMode: 1, enabled: true });
+            maps.push({ mapName: "main", teamMode: 2, enabled: true });
+            maps.push({ mapName: "main", teamMode: 4, enabled: true });
             break;
         }
         case "thursday": {
-            maps.push({ mapName: 'desert', teamMode: 1, enabled: true });
-            maps.push({ mapName: 'main', teamMode: 2, enabled: true });
-            maps.push({ mapName: 'desert', teamMode: 4, enabled: true });
+            maps.push({ mapName: "desert", teamMode: 1, enabled: true });
+            maps.push({ mapName: "main", teamMode: 2, enabled: true });
+            maps.push({ mapName: "desert", teamMode: 4, enabled: true });
             break;
         }
         case "friday": {
-            maps.push({ mapName: 'main', teamMode: 1, enabled: true });
-            maps.push({ mapName: 'potato', teamMode: 2, enabled: true });
-            maps.push({ mapName: 'potato', teamMode: 4, enabled: true });
+            maps.push({ mapName: "main", teamMode: 1, enabled: true });
+            maps.push({ mapName: "potato", teamMode: 2, enabled: true });
+            maps.push({ mapName: "potato", teamMode: 4, enabled: true });
             break;
         }
         case "saturday": {
-            maps.push({ mapName: 'savannah', teamMode: 1, enabled: true });
-            maps.push({ mapName: 'savannah', teamMode: 2, enabled: true });
-            maps.push({ mapName: 'main', teamMode: 4, enabled: true });
+            maps.push({ mapName: "savannah", teamMode: 1, enabled: true });
+            maps.push({ mapName: "savannah", teamMode: 2, enabled: true });
+            maps.push({ mapName: "main", teamMode: 4, enabled: true });
             break;
         }
         default: {
-            maps.push({ mapName: 'main', teamMode: 1, enabled: true });
-            maps.push({ mapName: 'main', teamMode: 2, enabled: true });
-            maps.push({ mapName: 'main', teamMode: 4, enabled: true });
+            maps.push({ mapName: "main", teamMode: 1, enabled: true });
+            maps.push({ mapName: "main", teamMode: 2, enabled: true });
+            maps.push({ mapName: "main", teamMode: 4, enabled: true });
             break;
         }
     }

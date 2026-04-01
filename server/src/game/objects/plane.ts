@@ -30,7 +30,7 @@ function findAirstrikePlaneSpawnAndDirection(
     dir: { x: number; y: number },
     mapSize: number,
     offset: number,
-    sideOffset: number
+    sideOffset: number,
 ): { spawn: { x: number; y: number }; newDir: { x: number; y: number } } {
     const reversedDir = { x: -dir.x, y: -dir.y };
 
@@ -115,7 +115,7 @@ export class PlaneBarn {
         options: PlaneOptions;
     }> = [];
 
-    constructor(readonly game: Game) { }
+    constructor(readonly game: Game) {}
     update(dt: number) {
         for (let i = 0; i < this.planes.length; i++) {
             const plane = this.planes[i];
@@ -164,42 +164,22 @@ export class PlaneBarn {
 
                         const dir = v2.randomUnit();
 
-                        this.addAirStrike(
-                            pos,
-                            dir,
-                            0
-                        );
+                        this.addAirStrike(pos, dir, 0);
 
                         setTimeout(() => {
-                            this.addAirStrike(
-                                pos,
-                                dir,
-                                8
-                            );
+                            this.addAirStrike(pos, dir, 8);
                         }, 800);
 
                         setTimeout(() => {
-                            this.addAirStrike(
-                                pos,
-                                dir,
-                                -8
-                            );
+                            this.addAirStrike(pos, dir, -8);
                         }, 800 * 2);
 
                         setTimeout(() => {
-                            this.addAirStrike(
-                                pos,
-                                dir,
-                                4
-                            );
+                            this.addAirStrike(pos, dir, 4);
                         }, 800 * 3);
 
                         setTimeout(() => {
-                            this.addAirStrike(
-                                pos,
-                                dir,
-                                -4
-                            );
+                            this.addAirStrike(pos, dir, -4);
                         }, 800 * 4);
 
                         break;
@@ -374,9 +354,21 @@ export class PlaneBarn {
             return;
         }
 
-        const planePosAndDir = findAirstrikePlaneSpawnAndDirection(targetPos, dir, 720, 100, sideOffset);
+        const planePosAndDir = findAirstrikePlaneSpawnAndDirection(
+            targetPos,
+            dir,
+            720,
+            100,
+            sideOffset,
+        );
 
-        const plane = new AirStrikePlane(this.game, id, planePosAndDir.spawn, targetPos, planePosAndDir.newDir);
+        const plane = new AirStrikePlane(
+            this.game,
+            id,
+            planePosAndDir.spawn,
+            targetPos,
+            planePosAndDir.newDir,
+        );
         this.planes.push(plane);
     }
 }

@@ -14,7 +14,7 @@ const gravity = 10;
 
 export class ProjectileBarn {
     projectiles: Projectile[] = [];
-    constructor(readonly game: Game) { }
+    constructor(readonly game: Game) {}
 
     update(dt: number) {
         for (let i = 0; i < this.projectiles.length; i++) {
@@ -218,13 +218,17 @@ export class Projectile extends BaseGameObject {
                 this.explode();
             }
 
-            if (!this.isStrobe && def.explosionType == "explosion_strobe" && def.strikeDelay) {
+            if (
+                !this.isStrobe &&
+                def.explosionType == "explosion_strobe" &&
+                def.strikeDelay
+            ) {
                 this.isStrobe = true;
 
                 setTimeout(() => {
                     this.game.playerBarn.addEmote(0, this.pos, "ping_airstrike", true);
                     this.game.planeBarn.addAirStrike(this.pos, this.dir, 0);
-                    
+
                     setTimeout(() => {
                         this.game.planeBarn.addAirStrike(this.pos, this.dir, 4);
                     }, 800);

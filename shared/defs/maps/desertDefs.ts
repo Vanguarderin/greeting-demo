@@ -101,7 +101,7 @@ const mapDef = {
             { name: "scout_elite", count: 1, weight: 1.5 },
             { name: "model94", count: 1, weight: 2 },
             { name: "colt45", count: 1, weight: 1 },
-            { name: "endless_ammo", count: 1, weight: 0.75 }
+            { name: "endless_ammo", count: 1, weight: 0.75 },
         ],
         tier_airdrop_rare: [
             { name: "garand", count: 1, weight: 6 },
@@ -121,7 +121,7 @@ const mapDef = {
             { name: "m249", count: 1, weight: 1 },
             { name: "awc", count: 1, weight: 1 },
             { name: "pkp", count: 1, weight: 1 },
-            { name: "outfitGhillie", count: 1, weight: 1 }
+            { name: "outfitGhillie", count: 1, weight: 1 },
         ],
         tier_ammo: [
             { name: "45acp", count: 60, weight: 3 },

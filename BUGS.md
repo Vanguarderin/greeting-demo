@@ -3,6 +3,8 @@ This list is from the issue https://github.com/leia-uwu/survev/issues/129, each 
 - ⚠️: This bug/exploit is half-fixed; Has problems and/or not accurate like the original one.
 - ❌: This bug/exploit is still not fixed.
 
+> **Note:** Consider using [GitHub Issues](https://github.com/vanguarderin/greeting-demo/issues) to track individual bugs for better visibility and discussion.
+
 # Bugs/exploits:
 ## Maps
 **1. Desert:**
@@ -32,7 +34,7 @@ This list is from the issue https://github.com/leia-uwu/survev/issues/129, each 
 - ✅: No roles
 - ⚠️: Loot tables incorrect
 
-**7. Faction (50v50)**
+**7. Faction (50v50):**
 - ✅: Players in a group will spawn in same spawn point as the group's leader, but each player have different team (Red or Blue)
 - ✅: Players who left a 50v50 match are still count as players
 - ✅: Missing large bridges (`bridge_lg_structure_01`)

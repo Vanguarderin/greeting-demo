@@ -46,7 +46,7 @@ If you see a notice notifying you of the machine you have just logged into, cong
  * [Git](https://git-scm.com)
  * [NGINX](https://nginx.org)
  * [Node.js](https://nodejs.org)
- * [pnpm](https://pnpm.io)
+ * [npm](https://www.npmjs.com/) (comes with Node.js)
 
 If you are logged in as root, start by making sure sudo is installed:
 ```sh
@@ -64,22 +64,17 @@ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
 sudo apt-get install -y nodejs
 ```
 
-And finally, install pnpm:
-```sh
-npm i -g pnpm
-```
-
 ### Building source
 Next, move into `/opt`, clone the repository and traverse into it:
 ```sh
 cd /opt
-git clone https://github.com/leia-uwu/survev.git
+git clone https://github.com/vanguarderin/greeting-demo.git survev
 cd survev
 ```
 
 Install the necessary dependencies:
 ```sh
-pnpm install
+npm install
 ```
 
 Its recommended that you generate an API key for the game server to connect to the API server
@@ -94,7 +89,7 @@ openssl rand -base64 32
 Configure server:
 
 ```sh
-nano survev-config.json
+nano survivio-config.json
 ```
 And populate it with the following content:
 ```json
@@ -153,7 +148,7 @@ to see more configuration options, see the file `server/src/config.ts`
 
 Build the client & server:
 ```sh
-pnpm -r build
+cd client && npm run build && cd ../server && npm run build && cd ..
 ```
 
 ### Setting up NGINX
@@ -247,7 +242,7 @@ Description=survev dedicated game server.
 [Service]
 Type=simple
 WorkingDirectory=/opt/survev/server
-ExecStart=/usr/bin/pnpm start:game
+ExecStart=/usr/bin/npm run start:game
 Restart=on-failure
 
 [Install]
@@ -275,7 +270,7 @@ Description=survev dedicated API server.
 [Service]
 Type=simple
 WorkingDirectory=/opt/survev/server
-ExecStart=/usr/bin/pnpm start:api
+ExecStart=/usr/bin/npm run start:api
 Restart=on-failure
 
 [Install]

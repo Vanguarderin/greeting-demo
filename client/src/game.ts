@@ -728,7 +728,7 @@ export class Game {
                 } else if (k == "toMouseDir" || k == "touchMoveDir") {
                     // Use 1-dot as a fast angle proxy instead of expensive acos+rad2deg
                     const dot = v2.dot(inputMsg[k], this.prevInputMsg[k]);
-                    diff = (1 - dot) > 0.000003; // ~0.1 degree threshold
+                    diff = 1 - dot > 0.000003; // ~0.1 degree threshold
                 } else if (k == "toMouseLen") {
                     diff = Math.abs(this.prevInputMsg[k] - inputMsg[k]) > 0.5;
                 } else if (k == "shootStart") {

@@ -6,26 +6,60 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": false,
+      "recommended": true,
       "complexity": {
-        "noStaticOnlyClass": "off"
+        "noStaticOnlyClass": "off",
+        "noForEach": "off",
+        "useLiteralKeys": "off",
+        "noUselessSwitchCase": "off",
+        "useArrowFunction": "off",
+        "noBannedTypes": "off",
+        "noUselessConstructor": "off",
+        "useOptionalChain": "off"
       },
       "correctness": {
         "noInvalidUseBeforeDeclaration": "error",
         "noUnusedVariables": "warn",
-        "noUnusedImports": "warn"
+        "noUnusedImports": "warn",
+        "noSwitchDeclarations": "off",
+        "noInnerDeclarations": "off",
+        "noUnknownProperty": "off",
+        "noUnknownMediaFeatureName": "off"
       },
       "style": {
         "noNamespace": "off",
         "noNonNullAssertion": "off",
         "useTemplate": "warn",
         "noUselessElse": "warn",
-        "useImportType": "error"
+        "useImportType": "error",
+        "noParameterAssign": "off",
+        "useDefaultParameterLast": "off",
+        "noInferrableTypes": "off",
+        "useNumberNamespace": "off",
+        "noUnusedTemplateLiteral": "off",
+        "noVar": "off",
+        "useEnumInitializers": "off",
+        "useConst": "off",
+        "noCommaOperator": "off",
+        "useNodejsImportProtocol": "off",
+        "useExponentiationOperator": "off",
+        "useSingleVarDeclarator": "off",
+        "useWhile": "off",
+        "noArguments": "off"
       },
       "suspicious": {
         "noDoubleEquals": "off",
         "noExplicitAny": "off",
-        "noPrototypeBuiltins": "off"
+        "noPrototypeBuiltins": "off",
+        "noAssignInExpressions": "off",
+        "noFallthroughSwitchClause": "off",
+        "noShadowRestrictedNames": "off",
+        "noImplicitAnyLet": "off",
+        "useIsArray": "off",
+        "noApproximativeNumericConstant": "off"
+      },
+      "a11y": {
+        "useGenericFontNames": "off"
       }
     }
   },

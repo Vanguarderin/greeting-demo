@@ -49,7 +49,7 @@ const mapDef = {
             { name: "scar", count: 1, weight: 0.5 },
             { name: "scout_elite", count: 1, weight: 0.05 },
             { name: "vss", count: 1, weight: 0.05 },
-            { name: "awc", count: 2, weight: 0.005 }
+            { name: "awc", count: 2, weight: 0.005 },
         ],
         tier_container: [
             { name: "tier_guns", count: 1, weight: 0.29 },
@@ -84,7 +84,7 @@ const mapDef = {
             { name: "scout_elite", count: 1, weight: 1.5 },
             { name: "model94", count: 1, weight: 2 },
             { name: "colt45", count: 1, weight: 1 },
-            { name: "endless_ammo", count: 1, weight: 0.75 }
+            { name: "endless_ammo", count: 1, weight: 0.75 },
         ],
         tier_airdrop_rare: [
             { name: "garand", count: 1, weight: 6 },
@@ -169,7 +169,7 @@ const mapDef = {
             { name: "self_revive", count: 1, weight: 1 },
             { name: "bonus_9mm", count: 1, weight: 1 },
             { name: "explosive", count: 1, weight: 1 },
-        ]
+        ],
     },
     mapGen: {
         map: {
@@ -210,14 +210,11 @@ const mapDef = {
                         },
                     },
                 ],
-                weights: [
-                    { weight: 1, widths: [3] }
-                ],
-                smoothness: 0.2
+                weights: [{ weight: 1, widths: [3] }],
+                smoothness: 0.2,
             },
         },
-        bridgeTypes: {
-        },
+        bridgeTypes: {},
         riverCabins: {
             cabin_01: 0,
         },
@@ -263,7 +260,7 @@ const mapDef = {
         fixedSpawns: [
             {
                 warehouse_01f: { small: 4, large: 5 },
-                kopje_patch_01: { small: 2, large: 3},
+                kopje_patch_01: { small: 2, large: 3 },
                 savannah_patch_01: 4,
                 crate_02sv_lake: 1,
                 cache_01: 1,
@@ -277,14 +274,14 @@ const mapDef = {
                 grassy_cover_01: 4,
                 grassy_cover_02: 4,
                 grassy_cover_03: 4,
-                grassy_cover_complex_01: 2
+                grassy_cover_complex_01: 2,
             },
         ],
         importantSpawns: [
             "warehouse_01f",
             "mansion_structure_01",
             "kopje_patch_01",
-            "savannah_patch_01"
+            "savannah_patch_01",
         ],
     },
 };

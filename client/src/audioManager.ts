@@ -168,7 +168,8 @@ export class AudioManager {
                 inst.instance.playState == "playInterrupted" ||
                 inst.instance.playState == "playFailed"
             ) {
-                this.soundInstances[i] = this.soundInstances[this.soundInstances.length - 1];
+                this.soundInstances[i] =
+                    this.soundInstances[this.soundInstances.length - 1];
                 this.soundInstances.pop();
             } else {
                 i++;
