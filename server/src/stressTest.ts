@@ -97,7 +97,7 @@ class ObjectCreator {
         if (obj) {
             for (const dataKey in data) {
                 // @ts-expect-error too lazy;
-                obj.data[dataKey] = data;
+                obj.data[dataKey] = data[dataKey];
             }
         } else {
             console.error("updateObjPart, missing object", id);

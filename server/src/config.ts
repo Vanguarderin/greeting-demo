@@ -168,9 +168,9 @@ function loadConfig(fileName: string, create?: boolean) {
     return loaded;
 }
 
-// try loading old config file first for backwards compatibility
+// try loading new config file first, fall back to legacy name
 if (!loadConfig("survivio-config.json")) {
-    loadConfig("survivio-config.json", true);
+    loadConfig("resurviv-config.json", true);
 }
 
 type DeepPartial<T> = T extends object

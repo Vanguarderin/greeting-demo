@@ -8,6 +8,8 @@ survivio-config-old.json
 
 # env file
 .env
+.env.local
+.env.*.local
 
 # sqlite db
 game.db
