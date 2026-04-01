@@ -1,0 +1,27 @@
+{
+	"modes": [
+		{
+			"mapName": "main",
+			"teamMode": 1,
+			"enabled": true
+		},
+		{
+			"mapName": "main",
+			"teamMode": 2,
+			"enabled": true
+		},
+		{
+			"mapName": "main",
+			"teamMode": 4,
+			"enabled": true
+		}
+	],
+	"thisRegion": "local",
+	"regions": {
+		"local": {
+			"https": false,
+			"address": "127.0.0.1:8001",
+			"l10n": "index-local"
+		}
+	}
+}

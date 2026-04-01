@@ -1,31 +1,64 @@
-# Dependencies
+reference/
+
+# config file
+# legacy
+resurviv-config.json
+# new
+survivio-config-old.json
+
+# env file
+.env
+
+# sqlite db
+game.db
+
+# Compiled source
+dist/
+
+# Node modules
 node_modules/
 
-# Environment files
-.env
-.env.local
-.env.*.local
-
-# Build outputs
-dist/
-coverage/
-.nyc_output/
-
-# Secrets
-*.key
-*.pem
-*.secret
-
-# IDE
+user-data/
 .idea/
-.vscode/
-*.swp
-*.swo
 
-# OS
+# General
 .DS_Store
-Thumbs.db
+.AppleDouble
+.LSOverride
 
-# Logs
-*.log
-npm-debug.log*
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# VS Code
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
