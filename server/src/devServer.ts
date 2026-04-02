@@ -4,16 +4,19 @@ import { util } from "../../shared/utils/util";
 import { ApiServer } from "./apiServer";
 import { Config } from "./config";
 import { type FindGameBody, GameServer } from "./gameServer";
+import { getLanIP } from "./utils/getLanIP";
 import { GIT_VERSION } from "./utils/gitRevision";
 import { Logger } from "./utils/logger";
 import { readPostedJSON, returnJson } from "./utils/serverHelpers";
+
+const lanIP = getLanIP();
 
 if (!Config.regions?.["local"]) {
     util.mergeDeep(Config, {
         regions: {
             local: {
                 https: false,
-                address: `${Config.devServer.host}:${Config.devServer.port}`,
+                address: `${lanIP}:${Config.devServer.port}`,
                 l10n: "index-local",
             },
         },
@@ -57,6 +60,7 @@ apiServer.init(app);
 app.listen(Config.devServer.host, Config.devServer.port, (): void => {
     logger.log(`Survev Dev Server v${version} - GIT ${GIT_VERSION}`);
     logger.log(`Listening on ${Config.devServer.host}:${Config.devServer.port}`);
+    logger.log(`LAN IP: ${lanIP} — Friends can connect via http://${lanIP}:3000`);
     logger.log("Press Ctrl+C to exit.");
     gameServer.init(app);
 });

@@ -16,12 +16,5 @@
       "enabled": true
     }
   ],
-  "thisRegion": "local",
-  "regions": {
-    "local": {
-      "https": false,
-      "address": "192.0.2.2:8001",
-      "l10n": "index-local"
-    }
-  }
+  "thisRegion": "local"
 }

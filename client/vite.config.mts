@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import stripBlockPlugin from "vite-plugin-strip-block";
 import { version } from "../package.json";
 import { Config } from "../server/src/config";
+import { getLanIP } from "../server/src/utils/getLanIP";
 import { GIT_VERSION } from "../server/src/utils/gitRevision";
 
 export const SplashThemes = {
@@ -72,7 +73,7 @@ export default defineConfig(({ mode }) => {
             ? {
                   local: Config.regions?.["local"] ?? {
                       https: false,
-                      address: `${Config.devServer.host}:${Config.devServer.port}`,
+                      address: `${getLanIP()}:${Config.devServer.port}`,
                       l10n: "index-local",
                   },
               }
@@ -148,12 +149,12 @@ export default defineConfig(({ mode }) => {
             host: "0.0.0.0",
             proxy: {
                 "/api": {
-                    target: `http://${Config.devServer.host}:${Config.devServer.port}`,
+                    target: `http://127.0.0.1:${Config.devServer.port}`,
                     changeOrigin: true,
                     secure: false,
                 },
                 "/team_v2": {
-                    target: `http://${Config.devServer.host}:${Config.devServer.port}`,
+                    target: `http://127.0.0.1:${Config.devServer.port}`,
                     changeOrigin: true,
                     secure: false,
                     ws: true,
