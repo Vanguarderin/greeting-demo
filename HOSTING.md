@@ -77,7 +77,7 @@ Install the necessary dependencies:
 npm install
 ```
 
-Its recommended that you generate an API key for the game server to connect to the API server
+It's recommended that you generate an API key for the game server to connect to the API server
 
 If you are only hosting a game server for a different region, you need to get the central API server key
 
@@ -117,7 +117,7 @@ REGION_ID should be replaced with the id of the region (example `na` for north a
 GAME_SERVER_IP_OR_DOMAIN should be the domain or ip of the region game server .
 
 SERVER_NAME_TRANSLATION should be the translation for the server name to display in the client (example: `index-north-america` for `North America`).
-Avaliable translations by default are: index-local, index-north-america, index-europe, index-asia, index-south-america, index-korea
+Available translations by default are: index-local, index-north-america, index-europe, index-asia, index-south-america, index-korea
 
 THIS_REGION_ID should be replaced with the region ID this game server is hosting
 
@@ -234,9 +234,15 @@ sudo systemctl restart nginx
 
 ### Running the game and API server
 
-Next, we will create systemd unit files for the Game and API server.
-which will ensure our application starts at boot and won't terminate if we end our SSH session:
+Next, we will create systemd unit files for the Game and API server,
+which will ensure our application starts at boot and won't terminate if we end our SSH session.
 If you are only hosting a game server, skip the API server part.
+
+First, create a dedicated service user (for security, avoid running as root):
+```sh
+sudo useradd -r -s /usr/sbin/nologin survev
+sudo chown -R survev:survev /opt/survev
+```
 
 ```sh
 sudo nano /etc/systemd/system/survev-game.service
@@ -249,6 +255,8 @@ Description=survev dedicated game server.
 
 [Service]
 Type=simple
+User=survev
+Group=survev
 WorkingDirectory=/opt/survev/server
 ExecStart=/usr/bin/env npm run start:game
 Restart=on-failure
@@ -277,6 +285,8 @@ Description=survev dedicated API server.
 
 [Service]
 Type=simple
+User=survev
+Group=survev
 WorkingDirectory=/opt/survev/server
 ExecStart=/usr/bin/env npm run start:api
 Restart=on-failure
