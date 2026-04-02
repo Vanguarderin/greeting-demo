@@ -23,44 +23,46 @@ if (!Config.regions?.["local"]) {
     });
 }
 
-const logger = new Logger("Dev server");
-const gameServer = new GameServer();
-const apiServer = new ApiServer();
+(async () => {
+    const logger = new Logger("Dev server");
+    const gameServer = await GameServer.create();
+    const apiServer = new ApiServer();
 
-const app = Config.devServer.ssl
-    ? SSLApp({
-          key_file_name: Config.devServer.ssl.keyFile,
-          cert_file_name: Config.devServer.ssl.certFile,
-      })
-    : App();
+    const app = Config.devServer.ssl
+        ? SSLApp({
+              key_file_name: Config.devServer.ssl.keyFile,
+              cert_file_name: Config.devServer.ssl.certFile,
+          })
+        : App();
 
-app.post("/api/find_game", async (res) => {
-    readPostedJSON(
-        res,
-        async (body: FindGameBody) => {
-            const data = await gameServer.findGame(body);
-            res.cork(() => {
-                returnJson(res, data);
-            });
-        },
-        () => {
-            logger.warn("/api/find_game: Error retrieving body");
-        },
-    );
-});
-
-setInterval(() => {
-    apiServer.updateRegion(gameServer.regionId, {
-        playerCount: gameServer.manager.getPlayerCount(),
+    app.post("/api/find_game", async (res) => {
+        readPostedJSON(
+            res,
+            async (body: FindGameBody) => {
+                const data = await gameServer.findGame(body);
+                res.cork(() => {
+                    returnJson(res, data);
+                });
+            },
+            () => {
+                logger.warn("/api/find_game: Error retrieving body");
+            },
+        );
     });
-}, 10 * 1000);
 
-apiServer.init(app);
+    setInterval(() => {
+        apiServer.updateRegion(gameServer.regionId, {
+            playerCount: gameServer.manager.getPlayerCount(),
+        });
+    }, 10 * 1000);
 
-app.listen(Config.devServer.host, Config.devServer.port, (): void => {
-    logger.log(`Survev Dev Server v${version} - GIT ${GIT_VERSION}`);
-    logger.log(`Listening on ${Config.devServer.host}:${Config.devServer.port}`);
-    logger.log(`LAN IP: ${lanIP} — Friends can connect via http://${lanIP}:3000`);
-    logger.log("Press Ctrl+C to exit.");
-    gameServer.init(app);
-});
+    apiServer.init(app);
+
+    app.listen(Config.devServer.host, Config.devServer.port, (): void => {
+        logger.log(`Survev Dev Server v${version} - GIT ${GIT_VERSION}`);
+        logger.log(`Listening on ${Config.devServer.host}:${Config.devServer.port}`);
+        logger.log(`LAN IP: ${lanIP} — Friends can connect via http://${lanIP}:3000`);
+        logger.log("Press Ctrl+C to exit.");
+        gameServer.init(app);
+    });
+})();

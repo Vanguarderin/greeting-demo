@@ -282,8 +282,23 @@ class Application {
             try {
                 pixi = createPixiApplication(false);
             } catch (_e) {
-                pixi = createPixiApplication(true);
+                try {
+                    pixi = createPixiApplication(true);
+                } catch (_e2) {
+                    // Both WebGL and Canvas rendering failed
+                }
             }
+
+            if (!pixi) {
+                const errDiv = document.createElement("div");
+                errDiv.style.cssText =
+                    "position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#333;color:#fff;font-size:1.5rem;z-index:9999;text-align:center;padding:2rem;";
+                errDiv.textContent =
+                    "Your browser does not support WebGL or Canvas rendering. Please update your browser or try a different one.";
+                document.body.appendChild(errDiv);
+                return;
+            }
+
             this.pixi = pixi;
             this.pixi.renderer.events.destroy();
             this.pixi.ticker.maxFPS = 60;
@@ -799,10 +814,10 @@ window.addEventListener("beforeunload", (e) => {
         return dialogText;
     }
 });
-window.addEventListener("onfocus", () => {
+window.addEventListener("focus", () => {
     App.hasFocus = true;
 });
-window.addEventListener("onblur", () => {
+window.addEventListener("blur", () => {
     App.hasFocus = false;
 });
 

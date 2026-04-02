@@ -3,7 +3,7 @@ import { App, SSLApp, type TemplatedApp, type WebSocket } from "uWebSockets.js";
 import { version } from "../../package.json";
 import { math } from "../../shared/utils/math";
 import { Config } from "./config";
-import { SingleThreadGameManager } from "./game/gameManager";
+import { GameManager, SingleThreadGameManager } from "./game/gameManager";
 import { GameProcessManager } from "./game/gameProcessManager";
 import { GIT_VERSION } from "./utils/gitRevision";
 import { Logger } from "./utils/logger";
@@ -54,12 +54,18 @@ export class GameServer {
     readonly region = Config.regions[Config.thisRegion];
     readonly regionId = Config.thisRegion;
 
-    readonly manager =
-        Config.processMode === "single"
-            ? new SingleThreadGameManager()
-            : new GameProcessManager();
+    manager!: GameManager;
 
     constructor() {}
+
+    static async create(): Promise<GameServer> {
+        const server = new GameServer();
+        server.manager =
+            Config.processMode === "single"
+                ? await SingleThreadGameManager.create()
+                : await GameProcessManager.create();
+        return server;
+    }
 
     init(app: TemplatedApp): void {
         setInterval(() => {
@@ -286,7 +292,8 @@ export class GameServer {
 }
 
 if (process.argv.includes("--game-server")) {
-    const server = new GameServer();
+    (async () => {
+    const server = await GameServer.create();
 
     const app = Config.gameServer.ssl
         ? SSLApp({
@@ -338,4 +345,5 @@ if (process.argv.includes("--game-server")) {
             server.sendData();
         }, 10 * 3000);
     });
+    })();
 }

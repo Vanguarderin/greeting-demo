@@ -229,37 +229,42 @@ export class GameProcessManager implements GameManager {
 
     readonly logger = new Logger("Game Process Manager");
 
-    constructor() {
-        this.newGame(Config.modes[0]);
+    constructor() {}
+
+    static async create(): Promise<GameProcessManager> {
+        const mgr = new GameProcessManager();
+        await mgr.newGame(Config.modes[0]);
 
         process.on("beforeExit", () => {
-            for (const gameProc of this.processes) {
+            for (const gameProc of mgr.processes) {
                 gameProc.process.kill();
             }
         });
 
         setInterval(() => {
-            for (const gameProc of this.processes) {
+            for (const gameProc of mgr.processes) {
                 gameProc.send({
                     type: ProcessMsgType.KeepAlive,
                 });
 
                 if (Date.now() - gameProc.lastMsgTime > 10000) {
-                    this.logger.log(
+                    mgr.logger.log(
                         `Game ${gameProc.id} did not send a message in more 10 seconds, killing`,
                     );
-                    this.killProcess(gameProc);
+                    mgr.killProcess(gameProc);
                 } else if (
                     gameProc.stopped &&
                     Date.now() - gameProc.stoppedTime > 60000
                 ) {
-                    this.logger.log(
+                    mgr.logger.log(
                         `Game ${gameProc.id} stopped more than a minute ago, killing`,
                     );
-                    this.killProcess(gameProc);
+                    mgr.killProcess(gameProc);
                 }
             }
         }, 5000);
+
+        return mgr;
     }
 
     getPlayerCount(): number {

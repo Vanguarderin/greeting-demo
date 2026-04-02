@@ -54,13 +54,18 @@ export class SingleThreadGameManager implements GameManager {
     readonly gamesById = new Map<string, Game>();
     readonly games: Game[] = [];
 
-    constructor() {
+    constructor() {}
+
+    static async create(): Promise<SingleThreadGameManager> {
+        const mgr = new SingleThreadGameManager();
+        await mgr.newGame(Config.modes[0]);
+
         // setInterval on windows sucks
         // and doesn't give accurate timings
         if (platform() === "win32") {
             new NanoTimer().setInterval(
                 () => {
-                    this.update();
+                    mgr.update();
                 },
                 "",
                 `${1000 / Config.gameTps}m`,
@@ -68,22 +73,22 @@ export class SingleThreadGameManager implements GameManager {
 
             new NanoTimer().setInterval(
                 () => {
-                    this.netSync();
+                    mgr.netSync();
                 },
                 "",
                 `${1000 / Config.netSyncTps}m`,
             );
         } else {
             setInterval(() => {
-                this.update();
+                mgr.update();
             }, 1000 / Config.gameTps);
 
             setInterval(() => {
-                this.netSync();
+                mgr.netSync();
             }, 1000 / Config.netSyncTps);
         }
 
-        this.newGame(Config.modes[0]);
+        return mgr;
     }
 
     update(): void {
