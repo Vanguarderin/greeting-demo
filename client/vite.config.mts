@@ -128,6 +128,16 @@ export default defineConfig(({ mode }) => {
                       end: "STRIP_FROM_PROD_CLIENT:END",
                   })
                 : undefined,
+            {
+                name: "html-token-replace",
+                transformIndexHtml(html) {
+                    return html
+                        .replaceAll("%VITE_BACKGROUND_IMG%", process.env.VITE_BACKGROUND_IMG ?? "")
+                        .replaceAll("%VITE_ADIN_PLAY_SCRIPT%", process.env.VITE_ADIN_PLAY_SCRIPT ?? "")
+                        .replaceAll("%VITE_AIP_PLACEMENT_ID%", process.env.VITE_AIP_PLACEMENT_ID ?? "")
+                        .replaceAll("%VITE_GAME_VERSION%", process.env.VITE_GAME_VERSION ?? "");
+                },
+            },
         ],
         json: {
             stringify: true,

@@ -666,14 +666,14 @@
 						</div>
 						<div class='streamer-list'></div>
 						<div id='featured-streamer-template'>
-							<a href='' target='_blank' class='btn-streamer btn-darken'></a>
+							<a href='' target='_blank' rel='noopener noreferrer' class='btn-streamer btn-darken'></a>
 						</div>
 					</div>
 					<div id='featured-youtuber'>
 						<div class='youtube-header'>
 							<div id='youtube-header-title' data-l10n='index-featured-youtuber'>Featured YouTuber</div>
 						</div>
-						<a href='' target='_blank' class='btn-youtuber btn-darken'></a>
+						<a href='' target='_blank' rel='noopener noreferrer' class='btn-youtuber btn-darken'></a>
 					</div>
 				</div>
 			</div>
@@ -702,7 +702,7 @@
 				<div class='modal-content modal-close'>
 					<div class='modal-header modal-header-reset-stats'>
 						<span class='close close-corner'></span>
-						<h2 id='modal-account-name-title' data-l10n='index-reset-stats'>Reset Stats</h2>
+						<h2 id='modal-account-reset-title' data-l10n='index-reset-stats'>Reset Stats</h2>
 					</div>
 					<div class='modal-body modal-body-reset-stats'>
 						<div class='modal-settings-item'>
@@ -723,7 +723,7 @@
 				<div class='modal-content modal-close'>
 					<div class='modal-header modal-header-delete'>
 						<span class='close close-corner'></span>
-						<h2 id='modal-account-name-title' data-l10n='index-delete-account'>Delete Account</h2>
+						<h2 id='modal-account-delete-title' data-l10n='index-delete-account'>Delete Account</h2>
 					</div>
 					<div class='modal-body modal-body-delete'>
 						<div class='modal-settings-item'>
@@ -796,13 +796,13 @@
 						<div id='social-share-block-wrapper'>
 							<div id='social-share-block' class='menu-block'>
 								<div class='btn-social-wrapper'>
-									<a href='https://facebook.com/' target='_blank'
+									<a href='https://facebook.com/' target='_blank' rel='noopener noreferrer'
 										class='btn-social btn-darken btn-facebook'></a>
-									<a href='https://twitter.com/' target='_blank'
+									<a href='https://twitter.com/' target='_blank' rel='noopener noreferrer'
 										class='btn-social btn-darken btn-twitter'></a>
-									<a href='https://discord.gg/' target='_blank'
+									<a href='https://discord.gg/' target='_blank' rel='noopener noreferrer'
 										class='btn-social btn-darken btn-discord'></a>
-									<a href='https://www.youtube.com/' target='_blank'
+									<a href='https://www.youtube.com/' target='_blank' rel='noopener noreferrer'
 										class='btn-social btn-darken btn-youtube'></a>
 
 								</div>
@@ -1086,6 +1086,7 @@
 										<p class='news-paragraph'>PARMA's FSTMS division is pleased to introduce the
 											next generation in starch-based modern warfare: the <span
 												class='highlight'>spud gun</span>.
+										</p>
 										<p class='news-paragraph'>Officially designated the SMG-8 (Spud Missile
 											Generator), the spud gun uses a proprietary breech-to-muzzle heat expander
 											to fry and propel wedge-shaped projectiles at tremendous speeds. Like its
@@ -1135,8 +1136,12 @@
 				</div>
 				<div class="ad-block-leaderboard-bottom" id="%VITE_AIP_PLACEMENT_ID%_728x90"></div>
 				<script>
-					if (window.aiptag) {
-						window.aiptag.cmd.display.push(function () { aipDisplayTag.display("%VITE_AIP_PLACEMENT_ID%_728x90"); });
+					if (window.aiptag?.cmd?.display) {
+						window.aiptag.cmd.display.push(function () {
+							if (typeof window.aipDisplayTag?.display === "function") {
+								window.aipDisplayTag.display("%VITE_AIP_PLACEMENT_ID%_728x90");
+							}
+						});
 					}
 				</script>
 			</div>
@@ -1146,11 +1151,11 @@
 				</div>
 			</div>
 			<div id="start-bottom-middle">
-				<a href='changelogRec.html' target="_blank" class="footer-after">ver %VITE_GAME_VERSION%</a>
-				<a href="changelog.html" target="_blank" data-l10n="index-proxy-sites">original changelog</a>
+				<a href='changelogRec.html' target="_blank" rel="noopener noreferrer" class="footer-after">ver %VITE_GAME_VERSION%</a>
+				<a href="changelog.html" target="_blank" rel="noopener noreferrer" data-l10n="index-proxy-sites">original changelog</a>
 				<!--
-          <a href='changelog.html' target="_blank" class="footer-after">ver 0.8.82</a>
-          <a href="proxy.txt" target="_blank" data-l10n="index-proxy-sites">proxy sites</a>
+          <a href='changelog.html' target="_blank" rel="noopener noreferrer" class="footer-after">ver 0.8.82</a>
+          <a href="proxy.txt" target="_blank" rel="noopener noreferrer" data-l10n="index-proxy-sites">proxy sites</a>
           -->
 			</div>
 			<div id='start-bottom-right-wrapper'>
@@ -1371,11 +1376,11 @@
 					</div>
 					<div id='settings-links'>
 						<!--
-              <a href='privacy.html' target="_blank" class="footer-after" data-l10n='index-privacy'>privacy</a>
+              <a href='privacy.html' target="_blank" rel="noopener noreferrer" class="footer-after" data-l10n='index-privacy'>privacy</a>
               -->
-						<a href='attribution.txt' target="_blank" class="footer-after"
+						<a href='attribution.txt' target="_blank" rel="noopener noreferrer" class="footer-after"
 							data-l10n='index-attributions'>attributions</a>
-						<a href='hof.html' target="_blank" data-l10n='index-hof'>HOF</a>
+						<a href='hof.html' target="_blank" rel="noopener noreferrer" data-l10n='index-hof'>HOF</a>
 					</div>
 				</div>
 				<div class='modal-footer'></div>
@@ -1396,7 +1401,7 @@
 					<div class='modal-divider'></div>
 					<div id='modal-hamburger-bottom'>
 						<a href='changelogRec.html' class="footer-after">ver %VITE_GAME_VERSION%</a>
-						<a href='attribution.txt' target="_blank">attributions</a>
+						<a href='attribution.txt' target="_blank" rel="noopener noreferrer">attributions</a>
 					</div>
 				</div>
 			</div>
@@ -1434,7 +1439,7 @@
 			<div class='modal-content modal-close'>
 				<div class='modal-header modal-header-name'>
 					<span class='close-loadouts close close-corner'></span>
-					<h2 id='modal-account-name-title' data-l10n='index-log-in-desc'>Log In / Create Account</h2>
+					<h2 id='modal-account-login-title' data-l10n='index-log-in-desc'>Log In / Create Account</h2>
 				</div>
 				<div class='modal-body modal-body-name'>
 					<p class='modal-body-text' data-l10n='index-create-account-prompt-1'>Log in to access this feature!
@@ -1450,7 +1455,7 @@
 			<div id='modal-item-confirm' class='modal'>
 				<div class='modal-content modal-close'>
 					<div class='modal-header modal-header-name'>
-						<h2 id='modal-account-name-title'>You got a new item!</h2>
+						<h2 id='modal-item-confirm-title'>You got a new item!</h2>
 					</div>
 					<div class='modal-body modal-body-name'>
 						<div id='modal-item-confirm-image-outer'>

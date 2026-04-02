@@ -39,7 +39,7 @@ After writing this command, hit enter. You will be prompted for a password.
 
 For security reasons, you cannot view your password as you type it. Type in the password, and hit enter.
 
-If you see a notice notifying you of the machine you have just logged into, congratulations! You have succesfully SSH'd into your server.
+If you see a notice notifying you of the machine you have just logged into, congratulations! You have successfully SSH'd into your server.
 
 ### Dependencies
 [Survev](https://github.com/leia-uwu/survev.git) requires a few dependencies:
@@ -122,7 +122,7 @@ THIS_REGION_ID should be replaced with the region ID this game server is hosting
 Example config file:
 ```json
 {
-    "apiKey": "j0wo7RY0pYgD6W2mEy2wLa7VE4olUPD1r2hZma8FU6o=",
+    "apiKey": "REPLACE_WITH_YOUR_GENERATED_API_KEY",
     "gameServer": {
         "apiServerUrl": "https://survev.io"
     },
