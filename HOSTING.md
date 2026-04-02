@@ -42,7 +42,7 @@ For security reasons, you cannot view your password as you type it. Type in the 
 If you see a notice notifying you of the machine you have just logged into, congratulations! You have successfully SSH'd into your server.
 
 ### Dependencies
-[Survev](https://github.com/leia-uwu/survev.git) requires a few dependencies:
+[Survev](https://github.com/vanguarderin/greeting-demo.git) requires a few dependencies:
  * [Git](https://git-scm.com)
  * [NGINX](https://nginx.org)
  * [Node.js](https://nodejs.org)
@@ -108,6 +108,8 @@ And populate it with the following content:
     "thisRegion": "THIS_REGION_ID"
 }
 ```
+**Note:** This template shows only the required fields. All other configuration options (such as `modes`, `gameTps`, `client`, etc.) will use default values. See `server/src/config.ts` for the complete list of available options.
+
 API_SERVER_URL should be replaced with the full address (including port and https) of the API Server.
 
 REGION_ID should be replaced with the id of the region (example `na` for north america).
@@ -150,6 +152,12 @@ Build the client & server:
 ```sh
 cd client && npm run build && cd ../server && npm run build && cd ..
 ```
+
+### Required firewall ports
+- Port 80 (HTTP) or 443 (HTTPS) — for client access and API requests via NGINX
+- Port 8001 (TCP/WebSocket) — for direct game server connections
+
+**Note:** For production deployments, it's strongly recommended to set up HTTPS. You can use [Let's Encrypt](https://letsencrypt.org/) with Certbot to obtain free SSL certificates.
 
 ### Setting up NGINX
 We will now setup NGINX to serve the client and API server.
@@ -242,7 +250,7 @@ Description=survev dedicated game server.
 [Service]
 Type=simple
 WorkingDirectory=/opt/survev/server
-ExecStart=/usr/bin/npm run start:game
+ExecStart=/usr/bin/env npm run start:game
 Restart=on-failure
 
 [Install]
@@ -270,7 +278,7 @@ Description=survev dedicated API server.
 [Service]
 Type=simple
 WorkingDirectory=/opt/survev/server
-ExecStart=/usr/bin/npm run start:api
+ExecStart=/usr/bin/env npm run start:api
 Restart=on-failure
 
 [Install]
