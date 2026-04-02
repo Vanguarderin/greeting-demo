@@ -70,7 +70,7 @@ export default defineConfig(({ mode }) => {
         ...Config.regions,
         ...(mode === "development"
             ? {
-                  local: {
+                  local: Config.regions?.["local"] ?? {
                       https: false,
                       address: `${Config.devServer.host}:${Config.devServer.port}`,
                       l10n: "index-local",
